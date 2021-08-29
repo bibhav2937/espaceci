@@ -9,11 +9,21 @@ podTemplate(label: 'mypod', cloud: 'kubernetes',
   node('mypod') {
        checkout scm
 
-      stage("To check docker") {
-          container("docker") {
-              sh "docker --version"
-              sh "ls -lrt"
-          }
+      stage("Build and Push") {
+        withCredentials(
+          [
+            usernamePassword(credentialsId: "dockercreds" ,
+              usernameVariable: "dockeruser" ,
+              passwordVariable: "dockerpass"
+            )
+          ]
+        ){
+          print 'username=' + dockeruser + 'password=' + dockerpass
+        }
+          // container("docker") {
+          //     sh "docker --version"
+          //     sh "ls -lrt"             
+          // }
       }
 
       stage("To check kubectl and helm") {
@@ -22,7 +32,7 @@ podTemplate(label: 'mypod', cloud: 'kubernetes',
               sh "kubectl version"
               sh "ls -lrt"
               sh "kubectl get all"
-              sh "python --version"              
+              // sh "python --version"              
           }
       }
 
