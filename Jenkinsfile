@@ -1,3 +1,6 @@
+def username = "bibhav2937"
+def password = "w.7E,)G4ary7cZ."
+
 podTemplate(label: 'mypod', cloud: 'kubernetes',
   containers: [
     containerTemplate(name: 'docker', image: 'docker', command: 'cat', ttyEnabled: true, privileged: true),
@@ -7,28 +10,37 @@ podTemplate(label: 'mypod', cloud: 'kubernetes',
   ],
   volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')]) {
   node('mypod') {
-       checkout scm
+      checkout scm
+
 
       stage("Build and Push") {
           container("docker") {
-              // sh "docker --version"
-              // sh "ls -lrt"    
-            withCredentials([[$class: 'UsernamePasswordMultiBinding' ,          
-              credentialsId: "dockercreds" , 
-              passwordVariable: 'PASSWORD', 
-              usernameVariable: 'USERNAME'
-            ]]) {
-              echo env.PASSWORD
-              echo env.USERNAME              
               sh("docker build -t espace:v1 .")
               echo "Build Done"
               sh("docker tag espace:v1 bibhav2937/espace:v1")
               echo "Tag Done"
-              // sh('docker login -u ${env.USERNAME} -p ${env.PASSWORD}')
-              // echo "Login Done"
-              // sh("docker push bibhav2937/espace:v1")         
-              // echo "Push Done"
-            }      
+              sh("docker login -u ${username} -p ${password}")
+              echo "Login Done"
+              sh("docker push bibhav2937/espace:v1")         
+              echo "Push Done"
+
+            // withCredentials([[$class: 'UsernamePasswordMultiBinding' ,          
+            //   credentialsId: "dockercreds" , 
+            //   passwordVariable: 'PASSWORD', 
+            //   usernameVariable: 'USERNAME'
+            // ]]) {
+            //   echo env.PASSWORD
+            //   echo env.USERNAME              
+            //   sh("docker build -t espace:v1 .")
+            //   echo "Build Done"
+            //   sh("docker tag espace:v1 bibhav2937/espace:v1")
+            //   echo "Tag Done"
+            //   sh('docker login -u ${env.USERNAME} -p ${env.PASSWORD}')
+            //   echo "Login Done"
+            //   sh("docker push bibhav2937/espace:v1")         
+            //   echo "Push Done"
+            // }   
+
           }
       }
 
