@@ -15,15 +15,6 @@ podTemplate(label: 'mypod', cloud: 'kubernetes',
 
       stage("Build and Push") {
           container("docker") {
-            //   sh "docker build -t espace:v1 ."
-            //   echo "Build Done"
-            //   sh "docker tag espace:v1 bibhav2937/espace:v1"
-            //   echo "Tag Done"
-            //   sh "echo $DOCKERHUB_CREDS_PSW | docker login -u $DOCKERHUB_CREDS_USR --pasword=stdin"
-            //   echo "Login Done"
-            //   sh "docker push bibhav2937/espace:v1"       
-            //   echo "Push Done"
-
             withCredentials([[$class: 'UsernamePasswordMultiBinding' ,          
               credentialsId: "dockercreds" , 
               passwordVariable: 'PASSWORD', 
@@ -35,7 +26,7 @@ podTemplate(label: 'mypod', cloud: 'kubernetes',
               echo "Build Done"
               sh("docker tag espace:v1 bibhav2937/espace:v1")
               echo "Tag Done"
-              sh("echo env.PASSWORD | docker login -u env.USERNAME --password=stdin")
+              sh("docker login -u 'bibhav2937' -p 'cdd735e8-9723-45c4-8a5b-cbd9df98bfa1'")
               echo "Login Done"
               sh("docker push bibhav2937/espace:v1")         
               echo "Push Done"
