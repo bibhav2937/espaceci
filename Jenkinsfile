@@ -22,7 +22,7 @@ podTemplate(label: 'mypod', cloud: 'kubernetes',
                 echo "Tag Done"
               }
 
-              if( ${BRANCH_NAME} == "main") {
+              if( BRANCH_NAME == "main") {
                 stage("Image Push"){ 
                   sh "docker login -u ${DOCKERUSER} -p ${DOCKERPASS}"
                   echo "Login Done"
