@@ -17,7 +17,7 @@ The solution is as given below:
     * [architecture](#architecture))
 
 # System Architecture <a name="architecture"></a>
-![Architecture](espa.png)
+![Architecture](espacewebapp.png)
 
 # App Development 
 
