@@ -12,8 +12,7 @@ pipeline {
           container(docker) {
             steps {
                 echo 'Hello World'
-                sleep 60
-                docker --version
+                sh "docker --version"
                 ls -lrt
             }
           }            
