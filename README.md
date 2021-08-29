@@ -14,10 +14,10 @@ Description: Create a sample web page and deploy it as a microservice in a kuber
 
 # Solution
 The solution is as given below:
-    1. [architecture](#architecture)
-    2. [AppDevelopment](#appdev)
-    3. [AppUpdate](#appupdates)
-    4. [The "misses"](#missed)
+## [architecture](#architecture)
+## [AppDevelopment](#appdev)
+## [AppUpdate](#appupdates)
+## [The "misses"](#missed)
 
 # System Architecture <a name="architecture"></a>
 Please refer to attached snapshot for the details of the system architecture. 
@@ -44,4 +44,6 @@ These are the few good-to-have-things in the end-to-end solution which was not i
 1. There should be a unit-testing stage in the CI that should check for the image and functionality in the local environment first.
 2. Rollout of the app should be done using canary based approach.
 3. Credentials to the repo should be stored securely either in jenkins creds manager or in some external vaults(like: hashicorp vault) but the solution directly takes the creds as variable.
+
+ForDemo1
 
