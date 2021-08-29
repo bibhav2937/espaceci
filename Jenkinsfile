@@ -9,13 +9,11 @@ pipeline {
 
     stages {
         stage('Build and tag') {
-          container(docker) {
-            steps {
-                echo 'Hello World'
-                sh "docker --version"
-                ls -lrt
-            }
-          }            
+          steps {
+            sh "docker --version"
+            sh "kubectl version"
+          }
+           
         }
     }
 }
