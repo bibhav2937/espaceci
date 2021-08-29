@@ -18,9 +18,9 @@ podTemplate(label: 'mypod', cloud: 'kubernetes',
               passwordVariable: 'PASSWORD', 
               usernameVariable: 'USERNAME'
             ]]) {
-              echo $PASSWORD
-              echo $USERNAME              
-              sh "docker login -u '$USERNAME' -p '$PASSWORD'"
+              echo env.PASSWORD
+              echo env.USERNAME              
+              sh "docker login -u ${env.USERNAME} -p ${env.PASSWORD}"
               echo "Login Done"
               sh "docker build -t espace:v1 ."
               echo "Build Done"
