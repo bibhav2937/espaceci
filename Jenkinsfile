@@ -13,7 +13,7 @@ podTemplate(label: 'mypod', cloud: 'kubernetes',
           container("docker") {
               // sh "docker --version"
               // sh "ls -lrt"    
-            withCredentials([[$class: 'UsernamePasswordMultiBinding'          
+            withCredentials([[$class: 'UsernamePasswordMultiBinding' ,          
               credentialsId: "dockercreds" , 
               passwordVariable: 'PASSWORD', 
               usernameVariable: 'USERNAME'
