@@ -11,8 +11,14 @@ podTemplate(label: 'mypod', cloud: 'kubernetes',
 
       stage("Build and Push") {
           container("docker") {
-              sh "docker --version"
-              sh "ls -lrt"             
+              // sh "docker --version"
+              // sh "ls -lrt"    
+            withCredentials([usernamePassword(credentialsId: dockercreds, passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+              echo $PASSWORD
+              echo $USERNAME
+
+            }
+         
           }
       }
 
