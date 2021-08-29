@@ -1,9 +1,9 @@
 pipeline {
     agent any
 
-    environment {
-      DOCKERHUB_CREDS = credentialsId('dockercreds')
-    }
+    // environment {
+    //   DOCKERHUB_CREDS = credentialsId('dockercreds')
+    // }
 
     stages {
         stage('Build and tag') {
