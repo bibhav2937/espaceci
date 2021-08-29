@@ -1,8 +1,6 @@
 pipeline {
     agent any
 
-    checkout scm
-
     environment {
       DOCKERHUB_CREDS = credentialsId('dockercreds')
     }
