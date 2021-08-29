@@ -8,7 +8,7 @@ podTemplate(label: 'mypod', cloud: 'kubernetes',
       checkout scm
 
       def DOCKERREPO = "bibhav2937/espace"
-      def IMAGE_TAG = "v1"
+      def IMAGE_TAG = "v2"
       def BRANCH_NAME = "espaceci-dev"
       def DOCKERUSER = "bibhav2937"
       def DOCKERPASS = "cdd735e8-9723-45c4-8a5b-cbd9df98bfa1"
@@ -22,7 +22,7 @@ podTemplate(label: 'mypod', cloud: 'kubernetes',
                 echo "Tag Done"
               }
 
-              if( BRANCH_NAME == "main") {
+              if( BRANCH_NAME == "espaceci-dev") {
                 stage("Image Push"){ 
                   sh "docker login -u ${DOCKERUSER} -p ${DOCKERPASS}"
                   echo "Login Done"
