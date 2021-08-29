@@ -10,20 +10,10 @@ podTemplate(label: 'mypod', cloud: 'kubernetes',
        checkout scm
 
       stage("Build and Push") {
-        withCredentials(
-          [
-            usernamePassword(credentialsId: "dockercreds" ,
-              usernameVariable: "dockeruser" ,
-              passwordVariable: "dockerpass"
-            )
-          ]
-        ){
-          print 'username=' + dockeruser + 'password=' + dockerpass
-        }
-          // container("docker") {
-          //     sh "docker --version"
-          //     sh "ls -lrt"             
-          // }
+          container("docker") {
+              sh "docker --version"
+              sh "ls -lrt"             
+          }
       }
 
       stage("To check kubectl and helm") {
