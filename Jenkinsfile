@@ -18,15 +18,15 @@ podTemplate(label: 'mypod', cloud: 'kubernetes',
               stage("Build App"){        
                 sh("docker build -t espace:v1 .")
                 echo "Build Done"
-                sh("docker tag espace:v1 ${DOCKERREPO}:${IMAGE_TAG}")
+                sh "docker tag espace:v1 ${DOCKERREPO}:${IMAGE_TAG}"
                 echo "Tag Done"
               }
 
-              if( ${BRANCH_NAME} == "espaceci-dev") {
+              if( ${BRANCH_NAME} == "main") {
                 stage("Image Push"){ 
-                  sh("docker login -u ${DOCKERUSER} -p ${DOCKERPASS}")
+                  sh "docker login -u ${DOCKERUSER} -p ${DOCKERPASS}"
                   echo "Login Done"
-                  sh("docker push ${DOCKERREPO}:${IMAGE_TAG}")         
+                  sh "docker push ${DOCKERREPO}:${IMAGE_TAG}"  
                   echo "Push Done"
                 }
               }
