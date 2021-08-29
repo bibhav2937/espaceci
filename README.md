@@ -45,3 +45,5 @@ These are the few good-to-have-things in the end-to-end solution which was not i
 2. Rollout of the app should be done using canary based approach.
 3. Credentials to the repo should be stored securely either in jenkins creds manager or in some external vaults(like: hashicorp vault) but the solution directly takes the creds as variable.
 
+ForDEmMO
+
