@@ -1,6 +1,3 @@
-def username = "bibhav2937"
-def password = "w.7E,)G4ary7cZ."
-
 podTemplate(label: 'mypod', cloud: 'kubernetes',
   containers: [
     containerTemplate(name: 'docker', image: 'docker', command: 'cat', ttyEnabled: true, privileged: true),
@@ -12,16 +9,19 @@ podTemplate(label: 'mypod', cloud: 'kubernetes',
   node('mypod') {
       checkout scm
 
+      environment {
+        DOCKERHUB_CREDS = credentialsId('dockercreds')
+      }
 
       stage("Build and Push") {
           container("docker") {
-              sh("docker build -t espace:v1 .")
+              sh "docker build -t espace:v1 ."
               echo "Build Done"
-              sh("docker tag espace:v1 bibhav2937/espace:v1")
+              sh "docker tag espace:v1 bibhav2937/espace:v1"
               echo "Tag Done"
-              sh("docker login -u ${username} -p ${password}")
+              sh "echo $DOCKERHUB_CREDS_PSW | docker login -u $DOCKERHUB_CREDS_USR --pasword=stdin"
               echo "Login Done"
-              sh("docker push bibhav2937/espace:v1")         
+              sh "docker push bibhav2937/espace:v1"       
               echo "Push Done"
 
             // withCredentials([[$class: 'UsernamePasswordMultiBinding' ,          
