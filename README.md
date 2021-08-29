@@ -14,10 +14,10 @@ Description: Create a sample web page and deploy it as a microservice in a kuber
 
 # Solution
 The solution is as given below:
-    1. [architecture](#architecture)
-    2. [AppDevelopment](#appdev)
-    3. [AppUpdate](#appupdates)
-    4. [The "misses"](#missed)
+## [architecture](#architecture)
+## [AppDevelopment](#appdev)
+## [AppUpdate](#appupdates)
+## [The "misses"](#missed)
 
 # System Architecture <a name="architecture"></a>
 Please refer to attached snapshot for the details of the system architecture. 
